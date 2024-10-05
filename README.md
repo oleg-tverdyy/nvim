@@ -32,3 +32,24 @@ git clone https://github.com/<your_user>/<your_repository> ~/.config/nvim
 ```shell
 nvim
 ```
+
+#### Setup LSP
+
+You need to go to the plugins file `lsp.lua` and modify inside the `lsp-config.sourcekit` field the `cmd` attribute by the path where your *SourceKit* LSP is located.
+
+```lua
+cmd = { "/usr/bin/sourcekit-lsp" }, -- Asegúrate de que esta ruta sea correcta
+```
+In general, you will need to know where to find the `sourcekit-lsp` server exectuable. Some examples:
+
+* With Xcode 11.4+
+  * `xcrun sourcekit-lsp` - run the server
+  * `xcrun --find sourcekit-lsp` - get the full path to the server
+* Toolchain from Swift.org
+  * Linux
+    * You will find `sourcekit-lsp` in the `bin` directory of the toolchain.
+  * macOS
+    * `xcrun --toolchain swift sourcekit-lsp` - run the server
+    * `xcrun --toolchain swift --find sourcekit-lsp` - get the full path to the server
+* Built from source
+  * `.build/<platform>/<configuration>/sourcekit-lsp`
