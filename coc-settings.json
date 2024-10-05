@@ -1,0 +1,4 @@
+{
+  "sourcekit.commandPath": "/usr/bin/sourcekit-lsp",
+  "snippets.ultisnips.pythonPrompt": false
+}
