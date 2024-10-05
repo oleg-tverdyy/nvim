@@ -17,7 +17,7 @@ return {
 
       -- Configuración para Pyright (Python)
       require("lspconfig").pyright.setup {
-        on_attach = function(client, bufnr)
+        on_attach = function(_, bufnr)
           local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
           local opts = { noremap = true, silent = true }
           buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
@@ -27,7 +27,7 @@ return {
 
       -- Configuración para TypeScript Language Server (JavaScript/TypeScript)
       require("lspconfig").ts_ls.setup {
-        on_attach = function(client, bufnr)
+        on_attach = function(_, bufnr)
           local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
           local opts = { noremap = true, silent = true }
           buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
