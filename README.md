@@ -33,7 +33,7 @@ git clone https://github.com/<your_user>/<your_repository> ~/.config/nvim
 nvim
 ```
 
-#### Setup LSP
+#### Setup SourceKit LSP
 
 You need to go to the plugins file `lsp.lua` and modify inside the `lsp-config.sourcekit` field the `cmd` attribute by the path where your *SourceKit* LSP is located.
 
@@ -53,3 +53,28 @@ In general, you will need to know where to find the `sourcekit-lsp` server exect
     * `xcrun --toolchain swift --find sourcekit-lsp` - get the full path to the server
 * Built from source
   * `.build/<platform>/<configuration>/sourcekit-lsp`
+
+#### Setup SourceKit LSP
+
+You need to go to the plugins file `lsp.lua` and modify inside the `lsp-config.jsonls` field the `cmd` attribute by the path where your *vscode* LSP is located.
+
+It is possible that you do not have it installed, to do it with homebrew you must use the following command:
+
+```bash
+brew install vscode-langservers-extracted
+```
+
+Once installed, the path to the vscode LSP on macOS is: `/opt/homebrew/bin/vscode-json-language-server`, which you have to put in the CMD field of the LSP configuration.
+
+```lua
+-- Configuración para JSON Language Server
+require("lspconfig").jsonls.setup {
+  cmd = { "/opt/homebrew/bin/vscode-json-language-server", "--stdio" }, -- Asegúrate de que el servidor LSP para JSON esté instalado
+  filetypes = { "json" },
+  settings = {
+    json = {
+      schemas = require("schemastore").json.schemas(),
+    },
+  },
+}
+```
