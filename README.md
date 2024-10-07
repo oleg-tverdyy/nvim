@@ -54,7 +54,7 @@ In general, you will need to know where to find the `sourcekit-lsp` server exect
 * Built from source
   * `.build/<platform>/<configuration>/sourcekit-lsp`
 
-#### Setup SourceKit LSP
+#### Setup VSCode LSP
 
 You need to go to the plugins file `lsp.lua` and modify inside the `lsp-config.jsonls` field the `cmd` attribute by the path where your *vscode* LSP is located.
 
